@@ -1,7 +1,6 @@
 package com.youtube.project.manageemployee.services;
 
 import com.youtube.project.manageemployee.entity.AchievementsEntity;
-import com.youtube.project.manageemployee.entity.EmployeeEntity;
 import com.youtube.project.manageemployee.model.Achievement;
 import com.youtube.project.manageemployee.repository.AchievementRepository;
 import com.youtube.project.manageemployee.repository.EmployeeRepository;
@@ -19,7 +18,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class AchievementService implements AchievementImplementService {
+public class AchievementService implements AchievementImpService {
     @Autowired
     public AchievementRepository achievementRepository;
 
@@ -39,12 +38,12 @@ public class AchievementService implements AchievementImplementService {
 
             exitAchievement.setName(achievement.getName());
 
-            EmployeeEntity employee = employeeRepository.findById(achievement.getId_employee()).orElse(null);
-            if (employee == null) {
-                return new ResponseEntity<>("Employee not fount", HttpStatus.NOT_FOUND);
-            }
+//            EmployeeEntity employee = employeeRepository.findById(achievement.getId_employee()).orElse(null);
+//            if (employee == null) {
+//                return new ResponseEntity<>("Employee not fount", HttpStatus.NOT_FOUND);
+//            }
 
-            exitAchievement.setEmployee(employee);
+//            exitAchievement.setEmployee(employee);
 
             achievementRepository.save(exitAchievement);
             return new ResponseEntity<>("Add achievement successfully", HttpStatus.OK);

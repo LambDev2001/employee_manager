@@ -1,15 +1,15 @@
 package com.youtube.project.manageemployee.model;
-import lombok.Data;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.sql.Blob;
+import lombok.Data;
+
 import java.util.Date;
+import java.sql.Blob;
 
 @Data
 public class Achievement {
     private Long id;
-    private Long id_employee;
     private String name;
-    private MultipartFile picture;
-    private Date received_date;
+    private Long employeeId;
+    private Blob picture;
+    private Date receivedDate;
 }

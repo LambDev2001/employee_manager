@@ -15,7 +15,7 @@ public class AchievementsEntity {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "id_employee")
+    @JoinColumn(name = "employee_id")
     private EmployeeEntity employee;
 
     @Lob

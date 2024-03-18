@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface AchievementImplementService {
+public interface AchievementImpService {
     List<AchievementsEntity> findByEmployeeId(Long id);
 
     ResponseEntity<String> addAchievement(Achievement achievement);

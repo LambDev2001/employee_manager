@@ -15,7 +15,7 @@ import java.sql.SQLException;
 import java.util.Optional;
 
 @Service
-public class EmployeeService implements EmployeeImplementService {
+public class EmployeeService implements EmployeeImpService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -23,19 +23,20 @@ public class EmployeeService implements EmployeeImplementService {
     public ResponseEntity<String> addEmployee(Employee employee) throws IOException, SQLException {
         Optional<EmployeeEntity> optionalEmployee = employeeRepository.findById(employee.getId());
 
-        if (optionalEmployee.isPresent()) {
-            EmployeeEntity existingEmployee = optionalEmployee.get();
-
-            existingEmployee.setName(employee.getName());
-            existingEmployee.setEmail(employee.getEmail());
-            existingEmployee.setPassword(employee.getPassword());
-            existingEmployee.setAddress(employee.getAddress());
-
-            employeeRepository.save(existingEmployee);
-            return new ResponseEntity<>("Received name: " + employee.getName() + ", email: " + employee.getEmail(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("Employee with ID " + employee.getId() + " not found", HttpStatus.NOT_FOUND);
-        }
+//        if (optionalEmployee.isPresent()) {
+//            EmployeeEntity existingEmployee = optionalEmployee.get();
+//
+//            existingEmployee.setName(employee.getName());
+//            existingEmployee.setEmail(employee.getEmail());
+//            existingEmployee.setPassword(employee.getPassword());
+//            existingEmployee.setAddress(employee.getAddress());
+//
+//            employeeRepository.save(existingEmployee);
+//            return new ResponseEntity<>("Received name: " + employee.getName() + ", email: " + employee.getEmail(), HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>("Employee with ID " + employee.getId() + " not found", HttpStatus.NOT_FOUND);
+//        }
+        return  new ResponseEntity<>("Employee with ID " + employee.getId() + " not found", HttpStatus.NOT_FOUND);
     }
 
     @Override
@@ -54,7 +55,7 @@ public class EmployeeService implements EmployeeImplementService {
         return employeeOptional.map(employeeEntity -> {
             Employee employee = new Employee();
             employee.setId(employeeEntity.getId());
-            employee.setName(employeeEntity.getName());
+//            employee.setName(employeeEntity.getName());
 
             return employee;
         });

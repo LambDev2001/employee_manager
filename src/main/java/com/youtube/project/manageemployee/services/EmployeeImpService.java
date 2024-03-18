@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
-public interface EmployeeImplementService  {
+public interface EmployeeImpService {
     ResponseEntity<String> addEmployee(Employee employee) throws IOException, SQLException;
 
     Optional<Employee> getEmployeeById(Long id);
